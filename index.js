@@ -19,24 +19,20 @@ const client = new Client({
 client.commands = new Collection();
 
 const commandsPath = path.join(__dirname, "src/commands");
-if (fs.existsSync(commandsPath)) {
-  for (const folder of fs.readdirSync(commandsPath)) {
-    const folderPath = path.join(commandsPath, folder);
-    for (const file of fs.readdirSync(folderPath).filter(f => f.endsWith(".js"))) {
-      const cmd = (await import(`file://${folderPath}/${file}`)).default;
-      if (!cmd || !cmd.data) continue;
-      client.commands.set(cmd.data.name, cmd);
-    }
+for (const folder of fs.readdirSync(commandsPath)) {
+  const folderPath = path.join(commandsPath, folder);
+  for (const file of fs.readdirSync(folderPath).filter(f => f.endsWith(".js"))) {
+    const cmd = (await import(`file://${folderPath}/${file}`)).default;
+    if (!cmd || !cmd.data) continue;
+    client.commands.set(cmd.data.name, cmd);
   }
 }
 
 const eventsPath = path.join(__dirname, "src/events");
-if (fs.existsSync(eventsPath)) {
-  for (const file of fs.readdirSync(eventsPath).filter(f => f.endsWith(".js"))) {
-    const evt = (await import(`file://${eventsPath}/${file}`)).default;
-    if (evt.once) client.once(evt.name, (...a) => evt.execute(...a, client));
-    else client.on(evt.name, (...a) => evt.execute(...a, client));
-  }
+for (const file of fs.readdirSync(eventsPath).filter(f => f.endsWith(".js"))) {
+  const evt = (await import(`file://${eventsPath}/${file}`)).default;
+  if (evt.once) client.once(evt.name, (...a) => evt.execute(...a, client));
+  else client.on(evt.name, (...a) => evt.execute(...a, client));
 }
 
 client.login(process.env.TOKEN);

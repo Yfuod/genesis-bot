@@ -1,5 +1,5 @@
 {
-  "name": "genesis-bot-env",
+  "name": "genesis-bot-env-full",
   "version": "1.0.0",
   "type": "module",
   "main": "index.js",

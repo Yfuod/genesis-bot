@@ -21,7 +21,11 @@ for (const folder of fs.readdirSync(commandsPath)) {
   const folderPath = path.join(commandsPath, folder);
   for (const file of fs.readdirSync(folderPath).filter(f => f.endsWith(".js"))) {
     const cmd = (await import(`file://${folderPath}/${file}`)).default;
-    client.commands.set(cmd.data.name, cmd);
+    if (!cmd || !cmd.data || !cmd.data.name) {
+    console.warn(`⚠️ Skipped invalid command file: ${file}`);
+    continue;
+}
+client.commands.set(cmd.data.name, cmd);
   }
 }
 

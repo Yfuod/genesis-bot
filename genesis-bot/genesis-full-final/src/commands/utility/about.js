@@ -1,0 +1,1 @@
+import {SlashCommandBuilder,EmbedBuilder} from 'discord.js';import config from '../../../config.json' assert {type:'json'};export default{data:new SlashCommandBuilder().setName('about').setDescription('about'),async execute(i){i.reply({embeds:[new EmbedBuilder().setTitle('Genesis').setColor(config.sakuraColor)],ephemeral:true});}};

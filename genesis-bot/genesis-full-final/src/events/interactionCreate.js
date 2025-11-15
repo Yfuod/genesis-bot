@@ -1,0 +1,1 @@
+export default{ name:'interactionCreate', async execute(i,c){if(!i.isChatInputCommand())return;const cmd=c.commands.get(i.commandName);if(cmd)try{await cmd.execute(i,c);}catch(e){console.error(e);i.reply({content:'Error',ephemeral:true});}}};

@@ -1,0 +1,1 @@
+export default{ name:'guildMemberAdd', async execute(m){const r=m.guild.roles.cache.find(r=>r.name==='Genesis Member');if(r)m.roles.add(r);const c=m.guild.channels.cache.find(c=>c.name==='welcome-gate');if(c)c.send(`Welcome <@${m.id}> 🌸`);} };

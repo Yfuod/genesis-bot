@@ -1,1 +1,0 @@
-import {createRoles} from '../utils/createRoles.js';import {createChannels} from '../utils/createChannels.js';export default{ name:'ready', once:true, async execute(client){for(const g of client.guilds.cache.values()){await createRoles(g);await createChannels(g);}console.log('Online')}}

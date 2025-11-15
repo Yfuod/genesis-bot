@@ -1,1 +1,0 @@
-import {SlashCommandBuilder} from 'discord.js';export default{data:new SlashCommandBuilder().setName('ping').setDescription('ping'),async execute(i){i.reply('Pong 🌸')}};

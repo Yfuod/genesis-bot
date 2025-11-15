@@ -1,1 +1,0 @@
-export async function createRoles(g){const roles=['Owner','Co-Owner','Developer','Scripter','Modeler','UI Designer','Map Designer','Tester','Genesis Member','Muted','Genesis Moderator','Genesis Administrator','Verified Player'];for(const r of roles){if(!g.roles.cache.find(x=>x.name===r)){await g.roles.create({name:r,color:'#FFB7C5'});}}}

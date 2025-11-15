@@ -1,1 +1,0 @@
-export async function createChannels(g){const ch=['welcome-gate','mod-logs','staff-updates','bot-commands'];for(const c of ch){if(!g.channels.cache.find(x=>x.name===c)){await g.channels.create({name:c,type:0});}}}

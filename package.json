@@ -1,6 +1,6 @@
 {
-  "name": "genesis-bot-env-full",
-  "version": "1.0.0",
+  "name": "genesisbot-levelb",
+  "version": "2.0.0",
   "type": "module",
   "main": "index.js",
   "scripts": {
@@ -8,6 +8,7 @@
     "deploy": "node deploy-commands.js"
   },
   "dependencies": {
-    "discord.js": "^14.15.3"
+    "discord.js": "^14.15.3",
+    "dotenv": "^16.4.1"
   }
 }

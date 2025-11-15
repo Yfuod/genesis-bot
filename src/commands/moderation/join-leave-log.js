@@ -1,1 +1,0 @@
-// placeholder join-leave log

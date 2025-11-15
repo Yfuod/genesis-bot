@@ -1,1 +1,0 @@
-// placeholder: auto create categories

@@ -1,6 +1,6 @@
-
 {
-  "token": "PUT_TOKEN_HERE",
-  "clientId": "PUT_CLIENT_ID_HERE",
-  "ownerId": "1201992634667638886"
+  "token": "YOUR_TOKEN_HERE",
+  "clientId": "YOUR_CLIENT_ID_HERE",
+  "ownerId": "1201992634667638886",
+  "color": "#FFB7C5"
 }

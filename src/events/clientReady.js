@@ -1,1 +1,7 @@
-// TODO: This command will be generated fully later.
+export default {
+  name: "clientReady",
+  once: true,
+  execute(client) {
+    console.log(`🌸 Logged in as ${client.user.tag} — Genesis Bot Activated!`);
+  },
+};

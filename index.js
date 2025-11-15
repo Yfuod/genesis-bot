@@ -2,7 +2,6 @@
 import fs from "fs";
 import path from "path";
 import { Client, GatewayIntentBits, Collection } from "discord.js";
-import config from "./config.json" assert { type: "json" };
 
 const client = new Client({
   intents: [
@@ -31,4 +30,4 @@ for (const file of fs.readdirSync(eventsPath).filter(f => f.endsWith(".js"))) {
   else client.on(evt.name, (...a) => evt.execute(...a, client));
 }
 
-client.login(config.token);
+client.login(process.env.TOKEN);

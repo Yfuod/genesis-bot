@@ -1,3 +1,4 @@
+
 import fs from 'fs';
 import path from 'path';
 import { Client, GatewayIntentBits, Collection } from 'discord.js';
@@ -14,12 +15,11 @@ const client = new Client({
 });
 
 client.commands = new Collection();
-
 const commandsPath = path.join(process.cwd(), "src/commands");
-for (const folder of fs.readdirSync(commandsPath)) {
-  const folderPath = path.join(commandsPath, folder);
-  for (const file of fs.readdirSync(folderPath).filter(f => f.endsWith(".js"))) {
-    const cmd = (await import(`file://${folderPath}/${file}`)).default;
+for (const category of fs.readdirSync(commandsPath)) {
+  const categoryPath = path.join(commandsPath, category);
+  for (const file of fs.readdirSync(categoryPath).filter(f => f.endsWith(".js"))) {
+    const cmd = (await import(`file://${categoryPath}/${file}`)).default;
     client.commands.set(cmd.data.name, cmd);
   }
 }

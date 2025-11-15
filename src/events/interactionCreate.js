@@ -1,7 +1,10 @@
 
 export default {
   name: "interactionCreate",
-  async execute(interaction, client) {
-    // Placeholder - will be filled in Pack 2+
+  async execute(i) {
+    if (i.isStringSelectMenu() && i.customId === "owner-panel-options") {
+      const v=i.values[0];
+      return i.reply({ content:`Selected: ${v}`, ephemeral:true });
+    }
   }
 };

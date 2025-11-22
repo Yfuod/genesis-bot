@@ -1,12 +1,11 @@
 {
   "name": "anime-genesis-bot-v6",
-  "version": "6.0.0",
+  "version": "6.1.0",
   "main": "index.js",
-  "engines": {"node":"18.x"},
   "scripts": {"start":"node index.js"},
-  "dependencies": {
-    "discord.js": "^14.15.3",
-    "dotenv": "^16.4.5",
-    "pg": "^8.11.3"
+  "dependencies":{
+    "discord.js":"^14.15.3",
+    "dotenv":"^16.4.5",
+    "pg":"^8.11.3"
   }
 }

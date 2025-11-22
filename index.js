@@ -14,19 +14,24 @@ const client = new Client({
 
 client.commands = new Collection();
 
+// ensure folders exist
+if(!fs.existsSync('./commands')) fs.mkdirSync('./commands');
+
 // load commands
 for(const folder of fs.readdirSync('./commands')){
-  for(const f of fs.readdirSync(`./commands/${folder}`).filter(x=>x.endsWith('.js'))){
-    const cmd = require(`./commands/${folder}/${f}`);
+  const folderPath = `./commands/${folder}`;
+  if(!fs.lstatSync(folderPath).isDirectory()) continue;
+  for(const f of fs.readdirSync(folderPath).filter(x=>x.endsWith('.js'))){
+    const cmd=require(`${folderPath}/${f}`);
     client.commands.set(cmd.data.name, cmd);
   }
 }
 
-// load events
+// events
 for(const f of fs.readdirSync('./events')){
-  const ev = require(`./events/${f}`);
-  if(ev.once) client.once(ev.name, (...args)=>ev.execute(...args, client));
-  else client.on(ev.name, (...args)=>ev.execute(...args, client));
+  const ev=require(`./events/${f}`);
+  if(ev.once) client.once(ev.name,(...a)=>ev.execute(...a,client));
+  else client.on(ev.name,(...a)=>ev.execute(...a,client));
 }
 
 client.login(process.env.TOKEN);

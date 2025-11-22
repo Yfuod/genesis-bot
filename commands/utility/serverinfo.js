@@ -1,1 +1,0 @@
-// serverinfo command placeholder
